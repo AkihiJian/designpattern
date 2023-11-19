@@ -1,0 +1,34 @@
+package com.jian.singleton.ehan1;
+
+import java.util.Objects;
+
+/**
+ * @author: JianJian
+ * @date: 2023/10/30 18:03
+ * @description:饿汉式，静态常量方法
+ */
+public class SingletonTest01 {
+    public static void main(String[] args) {
+        Singleton instance = Singleton.getInstance();
+        Singleton instance2 = Singleton.getInstance();
+        System.out.println(Objects.equals(instance2, instance));
+    }
+}
+
+
+class Singleton{
+    //1.构造器私有化，外部能new
+    private Singleton(){
+
+    }
+
+    //2.本类内部创建对象实例
+    private final static Singleton instance = new Singleton();
+
+    //3.对外提供静态的共有方法
+    public static Singleton getInstance(){
+        return instance;
+    }
+
+
+}
